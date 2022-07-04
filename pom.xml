@@ -6,7 +6,7 @@
   <name>CMS Portal Framework</name>
   <description>This is a portal of CMS used for maintain User Data</description>
   
-  
+  <!-- pom means project object model -->
   <dependencies>
   		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
@@ -48,6 +48,6 @@
 				<version>3.0.0-M5</version>
 			</plugin>			
 		</plugins>
-	</build>
+</build>
   
 </project>

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -20,12 +21,9 @@ public class BaseClass {
 		ReadConfigFile.getInstance();
 		driver.get(ReadConfigFile.getUrl()); // I will confirm you again
 		driver.manage().window().maximize();
-		ReadConfigFile.getInstance();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(ReadConfigFile.getPageLoadTime()));
 		ReadConfigFile.getInstance();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ReadConfigFile.getImplicitlyWaitTime()));
-		
-		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ReadConfigFile.getImplicitlyWaitTime()));		
 	}
 		
 	public WebDriver settingUpDriver(String driverName) { // return type parameterized method
@@ -44,6 +42,13 @@ public class BaseClass {
 		}	
 		return driver;
 	}
+	
+	@AfterMethod
+	public void tearUp() {
+		driver.quit();
+	}
+	
+	
 	
 	
 	
