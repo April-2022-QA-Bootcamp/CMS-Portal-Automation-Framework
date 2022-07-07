@@ -22,18 +22,17 @@ public class HomePageTest {
 	Properties properties;
 	
 	@BeforeMethod
-	
 	public void setUpHomePage() {
 		baseClass = new BaseClass();
-		baseClass.setUp("chrome");
-		homePage = PageFactory.initElements(driver, HomePage.class); // very very important interview que
+		driver = baseClass.setUp("chrome");
+		homePage = new HomePage(driver); // very very important interview que
 	}
 	
 	@Test (enabled = true, priority = 1)
 	public void logoTest(){
 		Assert.assertTrue(homePage.verifyLogo(), "Application Logo is not displayed ...");
 	}
-/*	
+	
 	@Test(enabled = true, priority = 2)
 	public void titleTest() {
 		String expected = "CMS Enterprise Portal";
@@ -57,7 +56,7 @@ public class HomePageTest {
 		softAssert.assertTrue(true);
 		softAssert.assertAll();
 	}
-*/	
+
 	@AfterMethod
 	public void tearUp() {
 		driver.quit();

@@ -15,15 +15,16 @@ import utils.ReadConfigFile;
 public class BaseClass {
 	public static WebDriver driver;
 	
-	@BeforeMethod
-	public void setUp(String browser) {
-		settingUpDriver(browser);
+
+	public WebDriver setUp(String browser) {
+		driver = settingUpDriver(browser);
 		ReadConfigFile.getInstance();
 		driver.get(ReadConfigFile.getUrl()); // I will confirm you again
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(ReadConfigFile.getPageLoadTime()));
 		ReadConfigFile.getInstance();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ReadConfigFile.getImplicitlyWaitTime()));		
+		return driver;
 	}
 		
 	public WebDriver settingUpDriver(String driverName) { // return type parameterized method
@@ -43,7 +44,7 @@ public class BaseClass {
 		return driver;
 	}
 	
-	@AfterMethod
+
 	public void tearUp() {
 		driver.quit();
 	}

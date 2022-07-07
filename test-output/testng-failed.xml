@@ -5,8 +5,8 @@
     <classes>
       <class name="pages.HomePageTest">
         <methods>
+          <include name="userIdTest"/>
           <include name="setUpHomePage"/>
-          <include name="logoTest"/>
           <include name="tearUp"/>
         </methods>
       </class> <!-- pages.HomePageTest -->
